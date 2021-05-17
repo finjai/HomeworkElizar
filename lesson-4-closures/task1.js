@@ -1,3 +1,4 @@
+"use strict";
 var empthy = " ";
 var sign = "#";
 var newLine ="\n";
