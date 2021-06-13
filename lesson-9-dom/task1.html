@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .inf_win {
+      padding: 2px;
+      text-align: center;
+      margin : 20px auto;
+      width: 300px;
+      height: 150px;
+      border: 1px solid;
+    }
+    .button {
+      display: block;
+      margin: 5px auto;
+      width: 300px;
+    }
+  </style>
+  <script src="HashStorage.js"></script>
+</head>
+<body>
+
+  <button id ="btn-1" class="button">«ввод информации о напитке» </button>
+  <button id ="btn-2" class="button">«получение информации о напитке»</button>
+  <button id ="btn-3" class="button">«удаление информации о напитке»</button>
+  <button id ="btn-4" class="button">«перечень всех напитков»</button>
+  <div class="inf_win">Информационное окно</div>
+
+  <script>
+    'use strict';
+
+    var DrinkStorage = new THashStorage();
+
+    document.getElementById('btn-1').addEventListener("click", function () {
+        var nameDrink = prompt('Введите название напитка');
+        var isAlco = prompt('Он алкогольный ? да : нет');
+        var recipe = prompt('опишите рецепт');
+
+        DrinkStorage.AddValue(nameDrink, [nameDrink, isAlco, recipe]);
+    });
+
+    document.getElementById('btn-2').addEventListener('click', function () {
+        var nameDrink = prompt('Какой напиток ?');
+        DrinkStorage.GetValue(nameDrink);
+        document.querySelector('.inf_win').innerHTML = 'Напиток : ' + '\n' + DrinkStorage.GetValue(nameDrink);
+    });
+
+    document.getElementById('btn-3').addEventListener('click', function () {
+        var nameDrink = prompt('Какой напиток удалить ?');
+        DrinkStorage.DeleteValue(nameDrink);
+        document.querySelector('.inf_win').innerHTML = 'Напиток ' + nameDrink + ' удален';
+    });
+
+    document.getElementById('btn-4').addEventListener('click', function () {
+        document.querySelector('.inf_win').innerHTML = 'Напитки: ' + DrinkStorage.GetKeys();
+    })
+
+  </script>
+
+</body>
+</html>
