@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task1</title>
+</head>
+<body>
+  <div>
+    <img src="image1.jpg">
+    <img src="image2.jpg">
+    <img src="image3.png">
+    <img src="image4.jpg">
+  </div>
+  <script>
+
+    var img = document.getElementsByTagName('img');
+    for(var i = 0; i < img.length; i++){
+        img[i].style.position = 'absolute';
+        var left = 300 * i;
+        img[i].style.left = left + 'px';
+    }
+
+    var DragImage=null;
+    var DragShiftX;
+    var DragShiftY;
+
+    document.addEventListener('mousedown', dragStart, false);
+    document.addEventListener('mouseup', mouseUp, false);
+    document.addEventListener('mousemove', mouseMove, false);
+
+    function mouseMove(EO) {
+        EO = EO || window.event;
+    }
+
+    function mouseUp(EO) {
+        EO = EO || window.event;
+    }
+
+    function dragStart (EO) {
+        EO = EO || window.event;
+        dragImage = EO.target;
+        dragImage.ondragstart = function() {
+            return false;
+        };
+
+        var mouseX = EO.pageX;
+        var mouseY = EO.pageY;
+        var imageX = dragImage.offsetLeft;
+        var imageY = dragImage.offsetTop;
+        dragShiftX = mouseX - imageX;
+        dragShiftY = mouseY - imageY;
+
+        for (var i = 0; i < img.length; i++) {
+            img[i].style.zIndex = 0;
+        }
+        dragImage.style.zIndex = 1;
+
+        window.onmousemove = dragMove;
+        window.onmouseup = dragStop;
+    }
+
+    function dragStop () {
+        window.onmousemove = null;
+        window.onmouseup = null;
+    }
+
+    function dragMove (EO) {
+        EO = EO || window.event;
+        var mouseX = EO.pageX;
+        var mouseY = EO.pageY;
+        var imageX = mouseX - dragShiftX;
+        var imageY = mouseY - dragShiftY;
+        dragImage.style.left = imageX + "px";
+        dragImage.style.top = imageY + "px";
+    }
+
+  </script>
+</body>
+</html>
