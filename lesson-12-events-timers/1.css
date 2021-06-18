@@ -1,0 +1,52 @@
+#wrapper {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 10px solid grey;
+  background-color: aliceblue;
+}
+
+.childElem {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: blanchedalmond;
+  position: absolute;
+  text-align: center;
+  line-height: 30px;
+}
+
+
+.childElemForDigitalWatch {
+  width: 120px;
+  height: 30px;
+  position: absolute;
+  text-align: center;
+  line-height: 30px;
+  font-size: 20px;
+  color: black;
+}
+
+.elemForArrowHours {
+  width: 9px;
+  height: 60px;
+  border-radius: 10px;
+  position: absolute;
+  background-color: black;
+}
+
+.elemForArrowMinutes {
+  width: 5px;
+  height: 120px;
+  border-radius: 10px;
+  position: absolute;
+  background-color: black;
+}
+
+.elemForArrowSeconds {
+  width: 2px;
+  height: 125px;
+  border-radius: 10px;
+  position: absolute;
+  background-color: black;
+}
